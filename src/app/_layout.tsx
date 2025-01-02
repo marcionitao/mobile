@@ -10,6 +10,7 @@ import {
   Rubik_600SemiBold,
   Rubik_700Bold,
 } from '@expo-google-fonts/rubik'
+import { Loading } from '@/components/loading'
 
 export default function Layout() {
   // usando as fontes
@@ -20,8 +21,8 @@ export default function Layout() {
     Rubik_700Bold,
   })
 
-  // caso as fontes ainda nao estao carregadas
-  if (!fontsLoaded) return null
+  // caso as fontes ainda nao estao carregadas(as fontes são assincronas), chame o componente Loading
+  if (!fontsLoaded) return <Loading />
 
   return (
     <Stack
