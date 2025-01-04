@@ -1,12 +1,13 @@
+import { Welcome } from '@/components/welcome'
 import * as SplashScreen from 'expo-splash-screen'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 
 SplashScreen.preventAutoHideAsync()
 
 export default function Index() {
   return (
-    <View>
-      <Text>hello</Text>
+    <View style={{ flex: 1, padding: 40, gap: 40 }}>
+      <Welcome />
     </View>
   )
 }
