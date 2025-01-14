@@ -11,3 +11,4 @@ nahebei is a mobile app for Cupon price control with QR code she can scan to get
 - Tabler Icons - @tabler/icons-react-native
 - React Native SVG - react-native-svg
 - Axios
+- React Native Botton Sheet - @gorhom/bottom-sheet

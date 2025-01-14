@@ -2,6 +2,7 @@
 // ficheiro responsavel pelas rotas da aplicação
 import { Stack } from 'expo-router'
 import { colors } from '@/styles/theme'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import {
   useFonts,
@@ -25,11 +26,14 @@ export default function Layout() {
   if (!fontsLoaded) return <Loading />
 
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: { backgroundColor: colors.gray[100] },
-      }}
-    />
+    // aplicando "GestureHandlerRootView" para permitir o uso de gestos na "Home"
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: colors.gray[100] },
+        }}
+      />
+    </GestureHandlerRootView>
   )
 }
