@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useWindowDimensions, Text } from 'react-native'
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet'
+import { router } from 'expo-router'
 import { Place, PlaceProps } from '../place'
 import { s } from './styles'
 
@@ -27,7 +28,18 @@ export function Places({ data }: Props) {
       <BottomSheetFlatList
         data={data}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Place data={item} />}
+        renderItem={({ item }) => (
+          <Place
+            data={item}
+            // onPress={() => router.navigate(`/market/${item.id}` as never)}
+            onPress={() =>
+              router.navigate({
+                pathname: '/market/:id',
+                params: { id: item.id },
+              })
+            }
+          />
+        )} // ao clicar no item, o valor do 'id' é passado por params para o componente [id].tsx
         contentContainerStyle={s.content}
         ListHeaderComponent={() => (
           <Text style={s.title}>Explore locations near you</Text>

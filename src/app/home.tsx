@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
 import { Alert, View, Text } from 'react-native'
-import { api } from '@/services/api'
+import MapView, { Marker, Callout } from 'react-native-maps'
+import * as Location from 'expo-location'
+import { router } from 'expo-router'
+
 import { Categories, CategoriesProps } from '@/components/categories'
 import { PlaceProps } from '@/components/place'
 import { Places } from '@/components/places'
-import MapView, { Marker, Callout } from 'react-native-maps'
-import * as Location from 'expo-location'
+
+import { api } from '@/services/api'
 import { colors, fontFamily } from '@/styles/theme'
+
 // como "PlaceProps" não possue as propriedades necessarias para o maps(latitude e longitude), adicionamos
 type MarketProps = PlaceProps & {
   latitude: number
@@ -115,7 +119,15 @@ export default function Home() {
             coordinate={{ latitude: item.latitude, longitude: item.longitude }}
             image={require('@/assets/ping.png')}
           >
-            <Callout tooltip>
+            <Callout
+              onPress={
+                () =>
+                  router.navigate({
+                    pathname: '/market/:id',
+                    params: { id: item.id },
+                  }) // redireciona para a rota market/:id ao clicar no pin do mapa
+              }
+            >
               <View>
                 <Text
                   style={{
