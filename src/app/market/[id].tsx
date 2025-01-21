@@ -7,6 +7,8 @@ import { Cover } from '@/components/market/cover'
 import { PropsDetails, Details } from '@/components/market/details'
 
 import { api } from '@/services/api'
+import { Coupon } from '@/components/market/coupon'
+import { Button } from '@/components/button'
 
 type DataProps = PropsDetails & {
   cover: string
@@ -16,6 +18,7 @@ export default function Market() {
   // criando um estado para armazenar os dados do local
   const [data, setData] = useState<DataProps>()
   const [isLoading, setLoading] = useState(true)
+  const [coupon, setCoupon] = useState<string | null>(null)
   // recuperando o id da rota
   const params = useLocalSearchParams<{ id: string }>()
   // função para buscar os dados do local
@@ -49,8 +52,14 @@ export default function Market() {
   return (
     <View style={{ flex: 1 }}>
       <Cover uri={data.cover} />
-
       <Details data={data} />
+      {coupon && <Coupon code={coupon} />}
+
+      <View style={{ padding: 32 }}>
+        <Button>
+          <Button.Title>Read QR Code</Button.Title>
+        </Button>
+      </View>
     </View>
   )
 }
