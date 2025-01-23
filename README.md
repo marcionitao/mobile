@@ -14,3 +14,4 @@ nahebei is a mobile app for Cupon price control with QR code she can scan to get
 - React Native Botton Sheet - @gorhom/bottom-sheet
 - Expo Maps View - expo-maps-view
 - Expo Location - @expo/location - *para pegar a localizacao do usuario*
+- Expo Camera - @expo/camera
